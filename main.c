@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <windows.h>
 #include <winuser.h>
-
+#define LEN ? // add message's len
 HHOOK hook;
 LPMSG msg;
 
-int key[] = { 0x49,0x4D,0x20,0x47,0x41,0x59,0x20 };
-int scan[] = { 0x17,0x32,0x39,0x22,0x1e,0x15,0x39 };
+int key[] = { }; // add the keys u want to be written
+int scan[] = { }; // add the keys' scan code
 
 void Stealth()
 {
@@ -39,7 +39,7 @@ LRESULT CALLBACK LowLevelKeyboardProc(int code, WPARAM wParam, LPARAM lParam)
                 KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP,
                 0); 
 
-            index = index % 7;
+            index = index % LEN;
             return 1;
         }
     }    
